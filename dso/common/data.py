@@ -157,8 +157,11 @@ def make_partitions(cfg) -> List[np.ndarray]:
     if cfg.dataset == "cifar10":
         labels = train_labels(cfg.data_root)
     elif cfg.dataset == "synthetic":
+        # pass the same parameters as materialise()/test_shard() so the shard
+        # labels can never drift from the data even if make_synthetic changes
         labels = make_synthetic(cfg.synthetic_samples, cfg.synthetic_dim,
-                                cfg.synthetic_classes, cfg.seed)[1].numpy()
+                                cfg.synthetic_classes, cfg.seed,
+                                cfg.synthetic_sep, cfg.synthetic_noise)[1].numpy()
     else:
         raise ValueError(f"unknown dataset {cfg.dataset!r}")
 
