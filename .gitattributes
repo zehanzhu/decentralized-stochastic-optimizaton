@@ -1,0 +1,9 @@
+# Keep the repository byte-identical across Windows editing and Linux training.
+# Files are stored with LF in the index; Windows checkouts may use CRLF locally
+# but a commit never rewrites the whole file just because of line endings.
+* text=auto eol=lf
+*.py  text eol=lf
+*.md  text eol=lf
+*.csv text eol=lf
+*.txt text eol=lf
+*.pt  binary
